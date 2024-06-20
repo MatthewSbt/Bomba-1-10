@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>🤯BOMBA!!!!!</title>
+  </head>
+  <body class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold mb-4">
+        <img
+          src=".vscode\icons8-bomb-48.png"
+          alt="Bomba"
+          class="inline-block w-12 h-12"
+        />
+        "BOMBA"!!!!!
+      </h1>
+      <script>
+        // Creazione dell'array di numeri da 1 a 10
+        let numeri = Array.from({ length: 10 }, (_, i) => i + 1);
+
+        // Selezione casuale della bomba
+        let bomba = numeri[Math.floor(Math.random() * numeri.length)];
+
+        // Funzione per chiedere numeri all'utente
+        function chiediNumero() {
+          let punteggio = 0;
+          let tentativi = [];
+
+          while (true) {
+            let numeroUtente = prompt("Inserisci un numero da 1 a 10:");
+
+            // Converti l'input in un numero
+            numeroUtente = parseInt(numeroUtente, 10);
+
+            // Controlla se l'input è valido
+            if (isNaN(numeroUtente) || numeroUtente < 1 || numeroUtente > 10) {
+              alert("Per favore, inserisci un numero valido tra 1 e 10.");
+              continue;
+            }
+
+            // Controlla se il numero è già stato inserito
+            if (tentativi.includes(numeroUtente)) {
+              alert("Hai già inserito questo numero. Prova un altro numero.");
+              continue;
+            }
+
+            // Aggiungi il numero ai tentativi
+            tentativi.push(numeroUtente);
+
+            // Controlla se l'utente ha inserito la bomba
+            if (numeroUtente === bomba) {
+              alert(`Hai colpito la bomba! Il tuo punteggio è: ${punteggio}`);
+              break;
+            }
+
+            // Incrementa il punteggio
+            punteggio++;
+          }
+        }
+
+        // Avvia il gioco
+        chiediNumero();
+      </script>
+    </div>
+  </body>
+</html>
